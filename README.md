@@ -1,2 +1,2 @@
 # cppcalc
-a simple C++ calc with the MDAS in PEMDAS so far
+A simple command-line P(e)MDAS evaluation program.
