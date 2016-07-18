@@ -2,6 +2,7 @@
 #include <sstream>
 #include <queue>
 #include <algorithm>
+#include <math.h>
 
 #include "./evaluator.cpp"
 #include "./parser.cpp"

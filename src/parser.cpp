@@ -31,7 +31,10 @@ void parse_input(std::string& str, std::queue<char>& operations, std::queue<doub
 		std::string tmp(it + 1, it2);
 		parse_input(tmp, operations, operands);
 
+		//std::cout << "evaluating " << tmp << std::endl;
 		tmp = std::to_string( evaluate(operations, operands) );
+		//std::cout << "\tit became " << tmp << std::endl;
+
 		str.erase(it,
 				 (it2 == str.end() ? it2 : it2 + 1) );
 				/*
