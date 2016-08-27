@@ -1,23 +1,35 @@
 static void scan_exponents(std::queue<char>& operations, std::queue<double>& operands) {
 
-	std::queue<char> operations_dup;
-	std::queue<double> operands_dup;
+	std::queue<char> 	operations_dup;
+	std::queue<double> 	operands_dup;
 
-	double lhs; char op;
+	double lhs; bool last_was_exp = false;
 
 	while(!operations.empty()) {
+		if (operations.front() == '^') {
+			last_was_exp = true;
 
-		lhs = operands.front(); operands.pop();
-		op = operations.front(); operations.pop();
+			lhs = operands.front(); operands.pop();
 
-		if (op == '^') {
-			//std::cout << "lhs = " << lhs << " and rhs = " << operands.front() << std::endl;
-			operands_dup.push(pow(lhs,operands.front()));
+			operands_dup.push( pow(lhs, operands.front()) );
+
 			operands.pop();
+		} else if (last_was_exp) {
+
+			operations_dup.push(operations.front());
+
+			last_was_exp = false;
 		} else {
-			operands_dup.push(lhs);
-			operations_dup.push(op);
+
+			operands_dup.push( operands.front() );
+			operands.pop();
+
+			operations_dup.push( operations.front() );
+
 		}
+
+		operations.pop();
+
 	}
 
 	while(!operands.empty()) {
