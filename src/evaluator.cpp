@@ -1,3 +1,9 @@
+#include <iostream>
+#include <sstream>
+#include <queue>
+#include <algorithm>
+#include <math.h>
+
 static void scan_exponents(std::queue<char>& operations, std::queue<double>& operands) {
 
 	std::queue<char> 	operations_dup;
@@ -42,7 +48,7 @@ static void scan_exponents(std::queue<char>& operations, std::queue<double>& ope
 }
 
 double evaluate(std::queue<char>& operations, std::queue<double>& operands) {
-	
+
 	/* Take care of exponents */
 	scan_exponents(operations, operands);
 
@@ -52,7 +58,7 @@ double evaluate(std::queue<char>& operations, std::queue<double>& operands) {
 
 		lhs = operands.front(); operands.pop();
 		/* rhs will stay `operands.front()`; do not pop this to save for next step */
-		
+
 		op = operations.front(); operations.pop();
 
 		while(operations.front() == '*' || operations.front() == '/') {

@@ -4,8 +4,8 @@
 #include <algorithm>
 #include <math.h>
 
-#include "./evaluator.cpp"
-#include "./parser.cpp"
+#include "./evaluator.h"
+#include "./parser.h"
 
 int main() {
 	/*

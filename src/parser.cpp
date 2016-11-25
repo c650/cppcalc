@@ -1,17 +1,26 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <queue>
+#include <algorithm>
+#include <math.h>
+
+#include "./evaluator.h"
+
 void parse_input(std::string& str, std::queue<char>& operations, std::queue<double>& operands) {
-	
+
 	str.erase(std::remove_if(str.begin(), str.end(), isspace)
 			  , str.end()); // remove spaces
-	
+
 
 	/* STRING PARENTHESIS STUFF*/
 	std::string::iterator it, it2;
-	
+
 	/* IF a ( is found...*/
 	while ((it = std::find(str.begin(), str.end(), '(')) != str.end()) {
 
 		unsigned int ign = 0;
-		
+
 		/*
 			Traverse the rest of the string until that ( is closed with ).
 			But we will make sure to account for nested ()...
@@ -51,7 +60,7 @@ void parse_input(std::string& str, std::queue<char>& operations, std::queue<doub
 	std::stringstream expression(str);
 
 	char c; double d;
-	while(expression >> d  >> c) {	
+	while(expression >> d  >> c) {
 		operands.push(d);
 		operations.push(c);
 	}
